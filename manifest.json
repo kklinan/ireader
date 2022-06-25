@@ -1,0 +1,55 @@
+{
+  "name": "iReader",
+  "description": "This extension helps you play web content in the form of voice. （通过语音形式播放网页内容）",
+  "version": "1.0",
+  "manifest_version": 3,
+  "omnibox": { "keyword" : "iread" },
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "permissions": [
+    "storage", 
+    "activeTab", 
+    "scripting",
+    "contextMenus",
+    "ttsEngine",
+    "tts"
+  ],
+  "action": {
+    "default_title": "iReader helper",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/16.png",
+      "32": "/images/32.png",
+      "48": "/images/48.png",
+      "128": "/images/128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/16.png",
+    "32": "/images/32.png",
+    "48": "/images/48.png",
+    "128": "/images/128.png"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [ "<all_urls>" ],
+      "js": [ "js/jquery-3.6.0.min.js", "js/content-script.js" ]
+    }
+  ],
+  "tts_engine": {
+    "voices": [
+      {
+        "voice_name": "Alice",
+        "lang": "en-US",
+        "event_types": ["start", "marker", "end"]
+      },
+      {
+        "voice_name": "Pat",
+        "lang": "zh-CN",
+        "event_types": ["start", "marker", "end"]
+      }
+    ]
+  }
+}
