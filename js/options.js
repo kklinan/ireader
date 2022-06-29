@@ -1,3 +1,17 @@
+function setChildTextNode(elementId, text) {
+  document.getElementById(elementId).innerText = text;
+}
+
+function init() {
+  document.title = chrome.i18n.getMessage("option_page_titile");       
+  setChildTextNode('select_background', chrome.i18n.getMessage("option_page_select_background"));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  init();
+});
+
+
 let page = document.getElementById("buttonDiv");
 let selectedClassName = "current";
 const presetButtonColors = ["#696969", "#3aa757", "#f9bb2d", "#4688f1"];

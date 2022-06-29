@@ -1,0 +1,41 @@
+{
+    "app_name": {
+        "message": "iReader"
+    },
+    "app_description": {
+        "message":"This extension helps you play web content in the form of voice."
+    },
+    "option_page_titile": {
+        "message": "iReader Options"
+    },
+    "option_page_select_background": {
+        "message": "Set default background color"
+    },
+    "set_background": {
+        "message": "Set Background"
+    },
+    "start": {
+        "message": "Start playing"
+    },
+    "stop": {
+        "message": "Stop playback"
+    },
+    "pause": {
+        "message": "Pause playback"
+    },
+    "resume": {
+        "message": "Continue playing"
+    },
+    "contextmenu_start": {
+        "message": "Start playing"
+    },
+    "contextmenu_stop": {
+        "message": "Stop playback"
+    },
+    "contextmenu_pause": {
+        "message": "Pause playback"
+    },
+    "contextmenu_resume": {
+        "message": "Continue playing"
+    }
+}

@@ -1,9 +1,10 @@
 {
-  "name": "iReader",
-  "description": "This extension helps you play web content in the form of voice. （通过语音形式播放网页内容）",
+  "name": "__MSG_app_name__",
+  "description": "__MSG_app_description__",
   "version": "1.0",
   "manifest_version": 3,
   "omnibox": { "keyword" : "iread" },
+  "default_locale": "en",
   "background": {
     "service_worker": "js/background.js"
   },

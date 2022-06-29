@@ -15,10 +15,10 @@ let speak_lang = 'zh-CN'
 
 
 const contextMenus = {
-  'start': '▶️开始播放',
-  'pause': '⏸️暂停播放',
-  'resume': '⏯️继续播放',
-  'stop': '⏹️退出播放'
+  'start': chrome.i18n.getMessage("contextmenu_start"),
+  'pause': chrome.i18n.getMessage("contextmenu_pause"),
+  'resume': chrome.i18n.getMessage("contextmenu_resume"),
+  'stop': chrome.i18n.getMessage("contextmenu_stop"),
 };
 
 chrome.runtime.onInstalled.addListener(() => {

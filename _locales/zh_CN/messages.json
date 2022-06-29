@@ -1,0 +1,41 @@
+{
+    "app_name": {
+        "message": "iReader"
+    },
+    "app_description": {
+        "message":"通过语音形式播放网页内容"
+    },
+    "option_page_titile": {
+        "message": "iReader 设置"
+    },
+    "option_page_select_background": {
+        "message": "设置默认背景颜色"
+    },
+    "set_background": {
+        "message": "设置背景"
+    },
+    "start": {
+        "message": "开始播放"
+    },
+    "stop": {
+        "message": "停止播放"
+    },
+    "pause": {
+        "message": "暂停播放"
+    },
+    "resume": {
+        "message": "继续播放"
+    },
+    "contextmenu_start": {
+        "message": "▶️开始播放"
+    },
+    "contextmenu_stop": {
+        "message": "⏹️退出播放"
+    },
+    "contextmenu_pause": {
+        "message": "⏸️暂停播放"
+    },
+    "contextmenu_resume": {
+        "message": "⏯️继续播放"
+    }
+}

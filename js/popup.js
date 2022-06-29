@@ -1,3 +1,19 @@
+function setChildTextNode(elementId, text) {
+  document.getElementById(elementId).innerText = text;
+}
+
+function init() {
+  setChildTextNode('changeColor', chrome.i18n.getMessage("set_background"));
+  setChildTextNode('start', chrome.i18n.getMessage("start"));
+  setChildTextNode('stop', chrome.i18n.getMessage("stop"));
+  setChildTextNode('pause', chrome.i18n.getMessage("pause"));
+  setChildTextNode('resume', chrome.i18n.getMessage("resume"));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  init();
+});
+
 // Initialize butotn with users's prefered color
 let changeColor = document.getElementById("changeColor");
 
