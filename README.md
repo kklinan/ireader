@@ -7,6 +7,6 @@ This chrome extension helps you play web content in the form of voice.
 ## Todo List
 
 - [x] Play selected content.
-- [ ] Automatically extract body content.
+- [x] Automatically extract body content.
 - [ ] Add play task.
 - [ ] Beautify the page.
