@@ -37,6 +37,7 @@ chrome.contextMenus.onClicked.addListener(
   function(data, tab) {
     if (data.menuItemId == start) {
       chrome.tabs.sendMessage(tab.id, {action: "get_content"}, function(response) {
+        chrome.tts.stop()
         speak_enqueue(response.content)
       });
     }
