@@ -50,7 +50,7 @@ start.addEventListener("click", async () => {
   // chrome.action.setBadgeText({text: 'ON'});
 
   // 向 content script 发送事件
-  chrome.tabs.sendMessage(tab.id, {action: "get_conent"}, function(response) {
+  chrome.tabs.sendMessage(tab.id, {action: "get_content"}, function(response) {
     // 向 background 发送事件
     chrome.runtime.sendMessage({msg: response.content, action: 'start'});
   });

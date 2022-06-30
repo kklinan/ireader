@@ -36,8 +36,8 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener(
   function(data, tab) {
     if (data.menuItemId == start) {
-      chrome.tabs.sendMessage(tab.id, {action: "get_conent"}, function(response) {
-        speak(response.content)
+      chrome.tabs.sendMessage(tab.id, {action: "get_content"}, function(response) {
+        speak_enqueue(response.content)
       });
     }
 
@@ -64,7 +64,8 @@ chrome.runtime.onMessage.addListener(async (data) => {
   // }
 
   if (data.action == start) {
-    speak(data.msg)
+    chrome.tts.stop()
+    speak_enqueue(data.msg)
   }
 
   if (data.action == cancel) {
@@ -81,8 +82,25 @@ chrome.runtime.onMessage.addListener(async (data) => {
 
 })
 
+// speak_enqueue 以队列形式播放语音
+function speak_enqueue(msg) {
+  var step = 10000;
+  var text_list = [];
+  for (var i=0,len=msg.length;i<len;i+=step) {
+    text_list.push(msg.slice(i,i+step));
+  }
+
+  for (var i = 0; i < text_list.length; i++) {
+    if (i == 0) {
+      speak(text_list[0], false)
+    } else {
+      chrome.storage.local.set({ list: text_list, curr_index: 0 });
+    }
+  }
+}
+
 // 播放语音
-function speak(msg) {
+function speak(msg, enqueue) {
   // chrome.tts.remote = true
   chrome.storage.sync.get("lang", ({ lang }) => {
     speak_lang = lang.value
@@ -91,7 +109,7 @@ function speak(msg) {
   chrome.tts.speak(msg, {
     'lang': speak_lang,
     'rate': 1.0,  
-    // 'enqueue': true,
+    // 'enqueue': enqueue,
     onEvent: function(event) {
       // console.log("事件类型：",event.type)
 
@@ -105,10 +123,25 @@ function speak(msg) {
 
       if (event.type == 'end') {
         chrome.action.setBadgeText({text: ''});
+
+        chrome.storage.local.get("list", ({ list }) => {
+          chrome.storage.local.get("curr_index", ({ curr_index }) => {
+
+            next_index = curr_index+1
+            if (next_index >= list.length) {
+              chrome.storage.local.remove('list')
+              return
+            }
+
+            speak(list[next_index], false)
+            chrome.storage.local.set({ curr_index: next_index });
+          });
+        });
       }
 
       if (event.type == 'stop') {
         chrome.action.setBadgeText({text: ''});
+        chrome.storage.local.remove('list')
       }
 
       if (event.type == 'interrupted') {
